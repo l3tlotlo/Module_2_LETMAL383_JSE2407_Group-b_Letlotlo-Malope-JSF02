@@ -1,0 +1,16 @@
+{
+  "name": "module-2-letmal383-jse2407-group-b-letlotlo-malope-jsf02",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^3.1.1",
+    "svelte": "^4.2.18",
+    "vite": "^5.3.4"
+  }
+}
