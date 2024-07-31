@@ -111,4 +111,4 @@
       <ProductDetail id={params.id} {wishlist} {cart} />
     </Route>
   </main>
-</Router>
+</Router> 
