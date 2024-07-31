@@ -7,7 +7,7 @@
   import { writable } from 'svelte/store';
 
   let searchTerm = "";
-  let sortOrder = "asc";
+  let sortOrder = "default";  // Initialize to "default"
   let filter = "";
   let products = writable([]);
   let categories = writable([]);
@@ -30,7 +30,9 @@
       if (!res.ok) throw new Error(`Failed to fetch products: ${res.statusText}`);
       let data = await res.json();
       if (filter) data = data.filter(product => product.category === filter);
-      data = data.sort((a, b) => sortOrder === "asc" ? a.price - b.price : b.price - a.price);
+      if (sortOrder !== "default") {
+        data = data.sort((a, b) => sortOrder === "asc" ? a.price - b.price : b.price - a.price);
+      }
       products.set(data);
     } catch (err) {
       console.error("Failed to fetch products:", err);
@@ -61,12 +63,11 @@
 
   function resetFilters() {
     filter = "";
-    sortOrder = "asc";
+    sortOrder = "default";  // Reset sortOrder to "default"
     searchTerm = "";
     fetchProducts();
   }
 </script>
-
 
 <Router>
   <Header {wishlist} {cart} />
@@ -94,6 +95,7 @@
                 {/each}
               </select>
               <select bind:value={sortOrder} on:change={fetchProducts} class="bg-gray-200 text-gray-900 px-4 py-2 rounded">
+                <option value="default">Back to Default</option>
                 <option value="asc">Price: Low to High</option>
                 <option value="desc">Price: High to Low</option>
               </select>
