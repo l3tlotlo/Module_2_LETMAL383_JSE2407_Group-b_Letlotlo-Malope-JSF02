@@ -29,7 +29,7 @@ Start the development server to view the application locally:
 
 bash npm start
 
-Open your browser and navigate to http://localhost:3000 to see the application in action.
+Open your browser and navigate to http://localhost:5173/ to see the application.
 
 Usage Examples
 Detailed View Page
